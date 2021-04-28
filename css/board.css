@@ -1,0 +1,50 @@
+#top-bar{
+    width: 420px;
+    border: 2px solid blue;
+    grid-area: top-bar;
+    align-items: center;
+    border-radius: 10px;
+    margin: 2.5px;
+}
+
+#arena{
+    width: 420px;
+    height: 465px;
+    grid-area: arena;
+}
+
+#bottom-bar{
+    width: 420px;
+    border: 2px solid blue;
+    grid-area: bottom-bar;
+    border-radius: 10px;
+    height: 20px;
+    margin: 2.5px;
+}
+
+#pacman-game{
+    display: grid;
+    border: 2px solid blue;
+    grid-template-areas: "top-bar"
+			 "arena"
+			 "bottom-bar";
+    justify-items: center;
+    border-radius: 10px;
+    width: 430px;
+}
+
+#high-score{
+    text-align: center;
+}
+
+#score{
+    font-size: 1.5rem;
+    text-align: center;
+
+}
+
+#player-score{
+    font-size: 1.5rem;
+    text-align: left;
+    padding-left: 1rem;
+}
