@@ -8,6 +8,7 @@
 }
 
 #arena{
+    position: relative; 	/*Make arena the root for the position of the walls and gums*/
     width: 420px;
     height: 465px;
     grid-area: arena;
@@ -47,4 +48,20 @@
     font-size: 1.5rem;
     text-align: left;
     padding-left: 1rem;
+}
+
+.wall {
+    position: absolute;
+    background-color: blue;
+    height: 15px;
+    width: 15px;
+}
+
+.gum{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: lightyellow;
+    transform: scale(.5, .5); 	/*scale circles to half the size*/
 }

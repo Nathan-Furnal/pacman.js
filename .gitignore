@@ -1,3 +1,7 @@
 # Ignore backup files
 
 *~
+
+# Ignore my config
+
+jsconfig.json
