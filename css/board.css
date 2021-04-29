@@ -62,6 +62,6 @@
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    background-color: lightyellow;
+    background-color: lightgoldenrodyellow;
     transform: scale(.5, .5); 	/*scale circles to half the size*/
 }
