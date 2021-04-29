@@ -5,7 +5,7 @@ class Tile {
   /**
    * Constructs a tile which only requires an id to be created.
    *
-   * @param {string} id a unique identifier to identify the tile
+   * @param {string} id - a unique identifier to identify the tile
    */
   constructor(id) {
     this.__id = id;
@@ -13,7 +13,7 @@ class Tile {
   /**
    * Gets the id of the Tile.
    *
-   * @returns {string}
+   * @returns {string} the identifier
    */
   get id() {
     return this.__id;

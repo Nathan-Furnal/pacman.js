@@ -5,8 +5,8 @@ class Position {
   /**
    * Constructs the 2D position given a row and column.
    *
-   * @param {number} row the row of the position
-   * @param {number} column the column of the position
+   * @param {number} row - the row of the position
+   * @param {number} column - the column of the position
    */
   constructor(row, column) {
     this.__row = row;
@@ -15,6 +15,8 @@ class Position {
 
   /**
    * Gets the row of the position.
+   *
+   * @returns {number} the row value
    */
   get row() {
     return this.__row;
@@ -22,6 +24,8 @@ class Position {
 
   /**
    * Gets the column of the position.
+   *
+   * @returns {number} the column value
    */
   get column() {
     return this.__column;
