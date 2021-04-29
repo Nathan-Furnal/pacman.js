@@ -7,7 +7,8 @@ class Maze {
    * Constructs the maze from a raw maze file. Each layer is created and then
    * populated with the relevant objects.
    *
-   * @param {number[][]} rawMaze - the 2d array on which the maze object is based
+   * @param {number[][]} rawMaze - the 2d array on which the maze object is
+   * based
    */
   constructor(rawMaze) {
     this.__rawMaze = rawMaze;
