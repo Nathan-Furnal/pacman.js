@@ -111,4 +111,53 @@ class Maze {
     }
     throw new Error("Pacman was not found at initialization time!");
   }
+
+  /**
+   * Gets the Pacman's initial position.
+   *
+   * @returns {Position} the Pacman's initial position
+   */
+  get pacmanRespawn() {
+    return this.__pacmanRespawn;
+  }
+
+  /**
+   * Checks if a tile can be walked on, which is the case for tiles within the
+   * scene which are not walls.
+   *
+   * @param {Position} pos - the position to check out
+   * @returns {boolean} true if the tile can be walked on, false otherwise
+   */
+  canWalkOn(pos) {
+    return !(this.getWallLayerTile(pos) instanceof Wall);
+  }
+
+  /**
+   * Checks if a tile has an item which can be picked up, which is the case for
+   * gums (Dot objects).
+   *
+   * @param {Position} pos - the position to check out
+   * @returns {boolean} true if there's an item that can be picked, false
+   * otherwise
+   */
+  canPick(pos) {
+    return this.getDotLayerTile(pos) instanceof Dot;
+  }
+
+  /**
+   * Pick the item at the given position and throws an error if there is no
+   * item.
+   *
+   * @param {Position} pos - the position to check out
+   * @returns {Dot} the picked up item
+   * @throws {Error} will throw an error if there is no item to pick up
+   */
+  pick(pos) {
+    let picked = this.getDotLayerTile(pos);
+    if (picked) {
+      return picked;
+    } else {
+      throw new Error("There is nothing to pick here!");
+    }
+  }
 }
