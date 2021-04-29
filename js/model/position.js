@@ -30,4 +30,14 @@ class Position {
   get column() {
     return this.__column;
   }
+
+  /**
+   * Moves towards the given direction.
+   *
+   * @param {Direction} dir - the direction to move towards
+   * @returns {Position} the new position after moving in the given direction
+   */
+  nextPosition(dir) {
+    return new Position(this.row + dir.deltaRow, this.column + dir.deltaColumn);
+  }
 }
