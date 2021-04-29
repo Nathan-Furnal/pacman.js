@@ -71,7 +71,7 @@ class Sprite extends Component {
    * another method call is necessary to actually update the direction of the
    * sprite.
    *
-   * @see changeDirection
+   * @see Sprite.changeDirection
    * @param {Direction} direction - the next direction to be headed to
    */
   askToChangeDirection(direction) {
