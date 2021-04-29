@@ -16,6 +16,7 @@ class Maze {
     this.buildWallLayer();
     this.__dotLayer = new Layer(this.nbRows, this.nbColumns);
     this.buildDotLayer();
+    this.__pacmanRespawn = this.findPacman();
   }
 
   /**
@@ -92,5 +93,22 @@ class Maze {
    */
   get nbColumns() {
     return this.__rawMaze.table[0].length;
+  }
+
+  /**
+   * Finds the initial position for the Pacman.
+   *
+   * @returns {Position} the position of the Pacman
+   * @throws {Error} will throw an error if the Pacman is not found
+   */
+  findPacman() {
+    for (let i = 0; i < this.nbRows; i++) {
+      for (let j = 0; j < this.nbColumns; j++) {
+        if (this.__rawMaze.table[i][j] === gameConsts.pacmanMazeValue) {
+          return new Position(i, j);
+        }
+      }
+    }
+    throw new Error("Pacman was not found at initialization time!");
   }
 }
