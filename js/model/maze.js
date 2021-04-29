@@ -18,7 +18,7 @@ class Maze {
   }
 
   /**
-   * Builds the wall layer, populating it with walls.
+   * Builds the wall layer, populating it with wall objects.
    */
   buildWallLayer() {
     for (let i = 0; i < this.nbRows; i++) {
@@ -33,7 +33,7 @@ class Maze {
     }
   }
   /**
-   * Builds the dot layer, populating it with dots.
+   * Builds the dot layer, populating it with dot objects.
    */
   buildDotLayer() {
     for (let i = 0; i < this.nbRows; i++) {
