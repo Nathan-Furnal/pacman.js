@@ -67,8 +67,8 @@ class GameView {
    */
   makeScene() {
     $("#scene").css({
-      height: `${gameConsts.itemSize * game.maze.nbRows}px`,
-      width: `${gameConsts.itemSize * game.maze.nbColumns}px`,
+      height: `${gameConsts.itemSize * this.__game.maze.nbRows}px`,
+      width: `${gameConsts.itemSize * this.__game.maze.nbColumns}px`,
     });
   }
 }
