@@ -70,5 +70,5 @@
     width: 15px;
     border-radius: 50%;
     background-color: brown;
-    transform: scale(.75, .75); 	/*scale circles to half the size*/
+    transform: scale(.70, .70); 
 }

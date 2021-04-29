@@ -40,8 +40,15 @@ class Maze {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
         let val = this.__rawMaze.table[i][j];
-        if (val === 2 || val === 3) {
+        if (val === 2) {
           this.__dotLayer.setTile(new Position(i, j), new Dot(`dot_${i}_${j}`));
+        }
+        if (val === 3) {
+          // Energizer
+          this.__dotLayer.setTile(
+            new Position(i, j),
+            new Dot(`dot_${i}_${j}`, true)
+          );
         }
       }
     }

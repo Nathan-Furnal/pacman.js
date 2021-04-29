@@ -27,9 +27,10 @@ class GameView {
    * @param {number} col - the column of the position to check on the maze
    */
   makeWallTile(row, col) {
-    if (this.__game.maze.getWallLayerTile(new Position(row, col))) {
+    let tile = this.__game.maze.getWallLayerTile(new Position(row, col));
+    if (tile) {
       $("#scene").append(
-        $("<span>")
+        $("<span>", { id: tile.id })
           .addClass("wall")
           .css({
             top: `${gameConsts.itemSize * row}px`,
@@ -48,15 +49,19 @@ class GameView {
    * @param {number} col - the column of the position to check on the maze
    */
   makeDotTile(row, col) {
-    if (this.__game.maze.getDotLayerTile(new Position(row, col))) {
+    let tile = this.__game.maze.getDotLayerTile(new Position(row, col));
+    if (tile) {
       $("#scene").append(
-        $("<span>")
+        $("<span>", { id: tile.id })
           .addClass("gum")
           .css({
             top: `${gameConsts.itemSize * row}px`,
             left: `${gameConsts.itemSize * col}px`,
           })
       );
+      if (tile.isEnergizer) {
+        $(`#${tile.id}`).removeClass("gum").addClass("energizer");
+      }
     }
   }
 
