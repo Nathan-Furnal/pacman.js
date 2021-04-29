@@ -1,6 +1,7 @@
 /**
  * A wall is a fixed tile composing the maze. A wall blocks either Pacman's or
  * ghosts movements.
+ * @extends Tile
  */
 class Wall extends Tile {
   /**

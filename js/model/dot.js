@@ -1,6 +1,7 @@
 /**
  * A dot is a fixed tile composing the maze, it will either represent a gum or
  * an energizer (a super gum).
+ * @extends Tile
  */
 class Dot extends Tile {
   /**
