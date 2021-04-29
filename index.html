@@ -19,6 +19,7 @@
     <script src="js/model/game.js"></script>
     <script src="js/constants.js"></script>
     <script src="js/view/gameView.js"></script>
+    <script src="js/controller/gameCtrl.js"></script>
   </head>
   <body>
     <main>
@@ -34,8 +35,7 @@
     </main>
     <script>
      $(function (){
-       game = new Game(RAW_MAZE);
-       view = new GameView(game);
+       new GameCtrl();
      })
     </script>
   </body>
