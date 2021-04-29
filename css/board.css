@@ -65,3 +65,12 @@
     background-color: lightgoldenrodyellow;
     transform: scale(.5, .5); 	/*scale circles to half the size*/
 }
+
+.energizer{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: brown;
+    transform: scale(.75, .75); 	/*scale circles to half the size*/
+}
