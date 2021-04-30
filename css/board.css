@@ -72,3 +72,12 @@
     background-color: brown;
     transform: scale(.70, .70); 
 }
+
+#pacman-id{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: yellow;
+    transform : scale(.9, .9);
+}

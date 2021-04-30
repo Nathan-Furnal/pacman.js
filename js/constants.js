@@ -5,3 +5,4 @@ const gameConsts = {
 };
 
 const PACMAN_ID = "pacman-id";
+const RUN_INTERVAL = 300;

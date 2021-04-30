@@ -45,7 +45,7 @@ class Sprite extends Component {
    * @returns {boolean} true if a direction change has been requested and false
    * otherwise
    */
-  get askedTochangeDirection() {
+  get askedToChangeDirection() {
     return this.__askedToChangeDirection;
   }
 

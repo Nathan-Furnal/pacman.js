@@ -4,13 +4,14 @@
  */
 class Game {
   /**
-   * Constructs the game from a raw maze file.
+   * Constructs the game from a raw maze file. It also instantiates a Pacman.
    *
    * @param {number[][]} rawMaze - the 2d array on which the maze object is
    * based
    */
   constructor(rawMaze) {
     this.__maze = new Maze(rawMaze);
+    this.__pacman = new Pacman(this.__maze.pacmanRespawn, Direction.WEST);
   }
 
   /**
@@ -20,5 +21,32 @@ class Game {
    */
   get maze() {
     return this.__maze;
+  }
+
+  /**
+   * Gets the Pacman of the game.
+   *
+   * @returns {Pacman} the Pacman
+   */
+  get pacman() {
+    return this.__pacman;
+  }
+
+  moveSprites() {
+    if (
+      this.pacman.askedToChangeDirection &&
+      this.maze.canWalkOn(
+        this.pacman.position.nextPosition(this.pacman.askedDirection)
+      )
+    ) {
+      this.pacman.changeDirection();
+      this.pacman.move();
+    } else if (
+      this.maze.canWalkOn(
+        this.pacman.position.nextPosition(this.pacman.direction)
+      )
+    ) {
+      this.pacman.move();
+    }
   }
 }

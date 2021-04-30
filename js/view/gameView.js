@@ -3,7 +3,7 @@
  */
 class GameView {
   /**
-   * Constructs the game view from a game and its maze.
+   * Constructs the game view from a game and its maze with a Pacman.
    *
    * @param {Game} game - the game to build the view for
    */
@@ -16,6 +16,7 @@ class GameView {
         this.makeDotTile(i, j);
       }
     }
+    this.makePacman();
   }
 
   /**
@@ -27,7 +28,7 @@ class GameView {
    * @param {number} col - the column of the position to check on the maze
    */
   makeWallTile(row, col) {
-    let tile = this.__game.maze.getWallLayerTile(new Position(row, col));
+    let tile = this.game.maze.getWallLayerTile(new Position(row, col));
     if (tile) {
       $("#scene").append(
         $("<span>", { id: tile.id })
@@ -49,7 +50,7 @@ class GameView {
    * @param {number} col - the column of the position to check on the maze
    */
   makeDotTile(row, col) {
-    let tile = this.__game.maze.getDotLayerTile(new Position(row, col));
+    let tile = this.game.maze.getDotLayerTile(new Position(row, col));
     if (tile) {
       $("#scene").append(
         $("<span>", { id: tile.id })
@@ -72,8 +73,39 @@ class GameView {
    */
   makeScene() {
     $("#scene").css({
-      height: `${gameConsts.itemSize * this.__game.maze.nbRows}px`,
-      width: `${gameConsts.itemSize * this.__game.maze.nbColumns}px`,
+      height: `${gameConsts.itemSize * this.game.maze.nbRows}px`,
+      width: `${gameConsts.itemSize * this.game.maze.nbColumns}px`,
     });
+  }
+
+  /**
+   * Creates the Pacman visual and appends it to the scene at the correct
+   * position.
+   */
+  makePacman() {
+    let pos = this.game.pacman.position;
+    $("#scene").append(
+      $("<span>", { id: this.game.pacman.id }).css({
+        top: `${gameConsts.itemSize * pos.row}px`,
+        left: `${gameConsts.itemSize * pos.column}px`,
+      })
+    );
+  }
+
+  /**
+   * Updates the frame and the sprites position.
+   */
+  updateFrame() {
+    $("#pacman-id").remove();
+    this.makePacman();
+  }
+
+  /**
+   * Gets the game composing the view.
+   *
+   * @returns {Game} the game
+   */
+  get game() {
+    return this.__game;
   }
 }

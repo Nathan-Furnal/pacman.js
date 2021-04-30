@@ -31,4 +31,11 @@ class PacmanView {
       }
     });
   }
+
+  /**
+   * @returns {PacmanCtrl}
+   */
+  get controller() {
+    return this.__pacmanCtrl;
+  }
 }
