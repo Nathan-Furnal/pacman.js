@@ -75,7 +75,7 @@ class Sprite extends Component {
    * @param {Direction} direction - the next direction to be headed to
    */
   askToChangeDirection(direction) {
-    this.__askedTochangeDirection = true;
+    this.__askedToChangeDirection = true;
     this.__askedDirection = direction;
   }
 
