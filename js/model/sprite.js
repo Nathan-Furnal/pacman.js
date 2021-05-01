@@ -19,6 +19,7 @@ class Sprite extends Component {
     this.__direction = direction;
     this.__askedToChangeDirection = false;
     this.__askedDirection;
+    this.__previousPosition = this.position;
   }
 
   /**
@@ -60,9 +61,11 @@ class Sprite extends Component {
   }
 
   /**
-   * Updates the position with the current direction.
+   * Updates the position with the current direction, keeps track of the
+   * previous position which is being left.
    */
   move() {
+    this.__previousPosition = this.position;
     this.__position = this.position.nextPosition(this.direction);
   }
 
@@ -85,4 +88,17 @@ class Sprite extends Component {
   changeDirection() {
     this.__direction = this.askedDirection;
   }
+
+  /**
+   * Gets the previous position of the sprite.
+   *
+   * @returns {Position} the previous position of the sprite
+   */
+  get previousPosition() {
+    return this.__previousPosition;
+  }
+  /**
+   * Does nothing at the Sprite level.
+   */
+  notifyIsBlocked() { }
 }

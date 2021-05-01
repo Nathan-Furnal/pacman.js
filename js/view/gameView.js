@@ -17,6 +17,7 @@ class GameView {
       }
     }
     this.makePacman();
+    this.makeGhosts();
   }
 
   /**
@@ -93,11 +94,30 @@ class GameView {
   }
 
   /**
-   * Updates the frame and the sprites position.
+   * Updates the frame and the sprites positions.
    */
   updateFrame() {
-    $("#pacman-id").remove();
+    $(`#${this.game.pacman.id}`).remove();
     this.makePacman();
+    for (let ghost of this.game.ghosts) {
+      $(`#${ghost.id}`).remove();
+    }
+    this.makeGhosts();
+  }
+
+  /**
+   * Makes the ghosts sprites on the game scene.
+   */
+  makeGhosts() {
+    for (let ghost of this.game.ghosts) {
+      let pos = ghost.position;
+      $("#scene").append(
+        $("<span>", { id: ghost.id }).css({
+          top: `${gameConsts.itemSize * pos.row}px`,
+          left: `${gameConsts.itemSize * pos.column}px`,
+        })
+      );
+    }
   }
 
   /**

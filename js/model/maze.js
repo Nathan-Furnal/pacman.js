@@ -17,6 +17,7 @@ class Maze {
     this.__dotLayer = new Layer(this.nbRows, this.nbColumns);
     this.buildDotLayer();
     this.__pacmanRespawn = this.findPacman();
+    this.__ghostRespawn = this.findGhosts();
   }
 
   /**
@@ -159,5 +160,31 @@ class Maze {
     } else {
       throw new Error("There is nothing to pick here!");
     }
+  }
+
+  /**
+   * Finds the initial position for the ghosts.
+   *
+   * @returns {Position} the position of the ghosts.
+   * @throws {Error} will throw an error if the ghost spawn point are not found
+   */
+  findGhosts() {
+    for (let i = 0; i < this.nbRows; i++) {
+      for (let j = 0; j < this.nbColumns; j++) {
+        if (this.__rawMaze.table[i][j] === gameConsts.ghostMazeValue) {
+          return new Position(i, j);
+        }
+      }
+    }
+    throw new Error("The ghosts were not found at initialization time!");
+  }
+
+  /**
+   * Gets the ghost respawn position.
+   *
+   * @returns {Position} the ghost respawn position
+   */
+  get ghostRespawn() {
+    return this.__ghostRespawn;
   }
 }

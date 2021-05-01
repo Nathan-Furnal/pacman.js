@@ -17,16 +17,16 @@ class PacmanView {
     $("body").on("keydown", (event) => {
       switch (event.key) {
         case "ArrowUp":
-          this.__pacmanCtrl.askToChangeDirection(Direction.NORTH);
+          this.controller.askToChangeDirection(Direction.NORTH);
           break;
         case "ArrowDown":
-          this.__pacmanCtrl.askToChangeDirection(Direction.SOUTH);
+          this.controller.askToChangeDirection(Direction.SOUTH);
           break;
         case "ArrowLeft":
-          this.__pacmanCtrl.askToChangeDirection(Direction.WEST);
+          this.controller.askToChangeDirection(Direction.WEST);
           break;
         case "ArrowRight":
-          this.__pacmanCtrl.askToChangeDirection(Direction.EAST);
+          this.controller.askToChangeDirection(Direction.EAST);
           break;
       }
     });

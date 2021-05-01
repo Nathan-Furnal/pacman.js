@@ -40,4 +40,20 @@ class Position {
   nextPosition(dir) {
     return new Position(this.row + dir.deltaRow, this.column + dir.deltaColumn);
   }
+
+  /**
+   * Compares the current position with another, based on row and column values.
+   *
+   * @param {Position} other - the position to be compared to
+   * @returns {boolean} true if the other position has the same row and column
+   * values, false otherwise
+   * @throws {Error} will throw an error if compared to an object that is not a
+   * position
+   */
+  equals(other) {
+    if (!(other instanceof Position)) {
+      throw new Error("A position can only be compared to another position.");
+    }
+    return this.row === other.row && this.column === other.column;
+  }
 }

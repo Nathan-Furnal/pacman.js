@@ -18,6 +18,7 @@ const gameConsts = {
  * @type {string}
  */
 const PACMAN_ID = "pacman-id";
+
 /**
  * The run interval between frame updates, set to 300ms.
  *
@@ -38,3 +39,11 @@ const directions = [
   Direction.WEST,
   Direction.EAST,
 ];
+
+/**
+ * The interval between ghosts direction change, set to 4000ms (4s).
+ *
+ * @constant
+ * @type {number}
+ */
+const GHOST_INTERVAL = 4000;
