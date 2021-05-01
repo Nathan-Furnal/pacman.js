@@ -68,7 +68,7 @@ class Sprite extends Component {
    * previous position which is being left.
    */
   move() {
-    this._previousPosition = this._position;
+    this._previousPosition = this.position;
     this._position = this.position.nextPosition(this.direction);
   }
 
