@@ -7,7 +7,7 @@ class GameCtrl {
    */
   constructor() {
     this._game = new Game(RAW_MAZE);
-    this._view = new GameView(this._game);
+    this._view = new GameView(this._game, this);
     this._pacmanCtrl = new PacmanCtrl(this._game.pacman);
     this._pacmanView = new PacmanView(this._pacmanCtrl);
   }
@@ -22,7 +22,6 @@ class GameCtrl {
         this.game.respawn();
         this.view.updateLives();
         if (this.game.isGameOver()) {
-          console.log("You died");
           clearInterval(this._timer);
           this.game.saveScore();
           this.view.displayGameOver();
@@ -48,5 +47,14 @@ class GameCtrl {
    */
   get view() {
     return this._view;
+  }
+
+  /**
+   * Wraps the function to run the game as a whole.
+   *
+   * @see GameCtrl.run
+   */
+  startHasBeenRequested() {
+    this.run();
   }
 }

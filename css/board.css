@@ -11,6 +11,9 @@
 #scene{
     position: relative; 	/*Make scene the root for the position of the walls and gums*/
     grid-area: scene;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #bottom-bar{
@@ -86,4 +89,17 @@
     background-color: yellow;
     transform: scale(.9, .9);
     margin: 5px;
+}
+
+#start-button{
+    position: absolute;
+    font-family: 'VT323', monospace;
+    border: 3px solid blue;
+    background-color: black;
+    color: floralwhite;
+}
+
+#start-button:hover{
+    transform : scale(1.2);
+    background-color: gray;
 }

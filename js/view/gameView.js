@@ -7,8 +7,9 @@ class GameView {
    *
    * @param {Game} game - the game to build the view for
    */
-  constructor(game) {
+  constructor(game, controller) {
     this._game = game;
+    this._controller = controller;
     this.makeScene();
     for (let i = 0; i < game.maze.nbRows; i++) {
       for (let j = 0; j < game.maze.nbColumns; j++) {
@@ -20,6 +21,7 @@ class GameView {
     this.makeGhosts();
     this.updateLives();
     this._makeHighScore();
+    this.makeStartButton();
   }
 
   /**
@@ -171,5 +173,25 @@ class GameView {
         this.makeDotTile(i, j);
       }
     }
+  }
+
+  /**
+   * Displays a start button.
+   */
+  makeStartButton() {
+    $("#scene").append(
+      $("<button>", { id: "start-button" }).html(
+        "<h1>&#128293;START&#128293;</h1>"
+      )
+    );
+  }
+
+  /**
+   * Starts the game and hides the start button.
+   *
+   */
+  startGame() {
+    $("#start-button").hide();
+    this._controller.startHasBeenRequested();
   }
 }

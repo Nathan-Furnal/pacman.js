@@ -45,7 +45,9 @@
     <script>
      $(function (){
        gameCtrl = new GameCtrl();
-       gameCtrl.run();
+       $("#start-button").click(function(){
+	 gameCtrl.view.startGame();
+       })
      })
     </script>
   </body>
