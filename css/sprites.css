@@ -1,0 +1,40 @@
+#pacman-id{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: yellow;
+    transform : scale(.9, .9);
+}
+
+#blinky{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: red;
+    transform: scale(0.9, 0.9);
+}
+
+#pinky{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: pink;
+    transform: scale(0.9, 0.9);
+}
+
+#inky{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: cyan;
+    transform: scale(0.9, 0.9);
+}
+
+#clyde{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: orange;
+    transform: scale(0.9, 0.9);
+}
