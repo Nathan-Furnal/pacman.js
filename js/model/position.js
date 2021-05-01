@@ -9,8 +9,8 @@ class Position {
    * @param {number} column - the column of the position
    */
   constructor(row, column) {
-    this.__row = row;
-    this.__column = column;
+    this._row = row;
+    this._column = column;
   }
 
   /**
@@ -19,7 +19,7 @@ class Position {
    * @returns {number} the row value
    */
   get row() {
-    return this.__row;
+    return this._row;
   }
 
   /**
@@ -28,7 +28,7 @@ class Position {
    * @returns {number} the column value
    */
   get column() {
-    return this.__column;
+    return this._column;
   }
 
   /**

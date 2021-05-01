@@ -47,3 +47,11 @@ const directions = [
  * @type {number}
  */
 const GHOST_INTERVAL = 4000;
+
+/**
+ * The initial number of lives for the Pacman.
+ *
+ * @constant
+ * @type {number}
+ */
+const PACMAN_NB_LIVES = 2;

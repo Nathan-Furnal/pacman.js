@@ -8,7 +8,7 @@ class GameView {
    * @param {Game} game - the game to build the view for
    */
   constructor(game) {
-    this.__game = game;
+    this._game = game;
     this.makeScene();
     for (let i = 0; i < game.maze.nbRows; i++) {
       for (let j = 0; j < game.maze.nbColumns; j++) {
@@ -126,6 +126,6 @@ class GameView {
    * @returns {Game} the game
    */
   get game() {
-    return this.__game;
+    return this._game;
   }
 }

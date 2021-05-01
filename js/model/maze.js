@@ -11,13 +11,13 @@ class Maze {
    * based
    */
   constructor(rawMaze) {
-    this.__rawMaze = rawMaze;
-    this.__wallLayer = new Layer(this.nbRows, this.nbColumns);
+    this._rawMaze = rawMaze;
+    this._wallLayer = new Layer(this.nbRows, this.nbColumns);
     this.buildWallLayer();
-    this.__dotLayer = new Layer(this.nbRows, this.nbColumns);
+    this._dotLayer = new Layer(this.nbRows, this.nbColumns);
     this.buildDotLayer();
-    this.__pacmanRespawn = this.findPacman();
-    this.__ghostRespawn = this.findGhosts();
+    this._pacmanRespawn = this.findPacman();
+    this._ghostRespawn = this.findGhosts();
   }
 
   /**
@@ -26,8 +26,8 @@ class Maze {
   buildWallLayer() {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
-        if (this.__rawMaze.table[i][j] === 1) {
-          this.__wallLayer.setTile(
+        if (this._rawMaze.table[i][j] === 1) {
+          this._wallLayer.setTile(
             new Position(i, j),
             new Wall(`wall_${i}_${j}`)
           );
@@ -41,13 +41,13 @@ class Maze {
   buildDotLayer() {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
-        let val = this.__rawMaze.table[i][j];
+        let val = this._rawMaze.table[i][j];
         if (val === 2) {
-          this.__dotLayer.setTile(new Position(i, j), new Dot(`dot_${i}_${j}`));
+          this._dotLayer.setTile(new Position(i, j), new Dot(`dot_${i}_${j}`));
         }
         if (val === 3) {
           // Energizer
-          this.__dotLayer.setTile(
+          this._dotLayer.setTile(
             new Position(i, j),
             new Dot(`dot_${i}_${j}`, true)
           );
@@ -64,7 +64,7 @@ class Maze {
    * @throws {Error} will throw an error if the position is not in the layer
    */
   getWallLayerTile(pos) {
-    return this.__wallLayer.getTile(pos);
+    return this._wallLayer.getTile(pos);
   }
 
   /**
@@ -75,7 +75,7 @@ class Maze {
    * @throws {Error} will throw an error if the position is not in the layer
    */
   getDotLayerTile(pos) {
-    return this.__dotLayer.getTile(pos);
+    return this._dotLayer.getTile(pos);
   }
 
   /**
@@ -84,7 +84,7 @@ class Maze {
    * @returns {number} the number of rows
    */
   get nbRows() {
-    return this.__rawMaze.table.length;
+    return this._rawMaze.table.length;
   }
 
   /**
@@ -93,7 +93,7 @@ class Maze {
    * @returns {number} the number of columns
    */
   get nbColumns() {
-    return this.__rawMaze.table[0].length;
+    return this._rawMaze.table[0].length;
   }
 
   /**
@@ -105,7 +105,7 @@ class Maze {
   findPacman() {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
-        if (this.__rawMaze.table[i][j] === gameConsts.pacmanMazeValue) {
+        if (this._rawMaze.table[i][j] === gameConsts.pacmanMazeValue) {
           return new Position(i, j);
         }
       }
@@ -119,7 +119,7 @@ class Maze {
    * @returns {Position} the Pacman's initial position
    */
   get pacmanRespawn() {
-    return this.__pacmanRespawn;
+    return this._pacmanRespawn;
   }
 
   /**
@@ -171,7 +171,7 @@ class Maze {
   findGhosts() {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
-        if (this.__rawMaze.table[i][j] === gameConsts.ghostMazeValue) {
+        if (this._rawMaze.table[i][j] === gameConsts.ghostMazeValue) {
           return new Position(i, j);
         }
       }
@@ -185,6 +185,6 @@ class Maze {
    * @returns {Position} the ghost respawn position
    */
   get ghostRespawn() {
-    return this.__ghostRespawn;
+    return this._ghostRespawn;
   }
 }

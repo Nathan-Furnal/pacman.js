@@ -13,7 +13,7 @@ class Dot extends Tile {
    */
   constructor(id, isEnergizer = false) {
     super(id);
-    this.__isEnergizer = isEnergizer;
+    this._isEnergizer = isEnergizer;
   }
   /**
    * Gets the energizer state of the dot.
@@ -21,6 +21,6 @@ class Dot extends Tile {
    * @returns {boolean} the energizer state
    */
   get isEnergizer() {
-    return this.__isEnergizer;
+    return this._isEnergizer;
   }
 }

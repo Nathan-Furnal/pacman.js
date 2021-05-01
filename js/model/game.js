@@ -10,17 +10,13 @@ class Game {
    * based
    */
   constructor(rawMaze) {
-    this.__maze = new Maze(rawMaze);
-    this.__pacman = new Pacman(this.maze.pacmanRespawn, Direction.WEST);
-    this.__blinky = new Ghost(
-      this.maze.ghostRespawn,
-      Direction.NORTH,
-      "blinky"
-    );
-    this.__pinky = new Ghost(this.maze.ghostRespawn, Direction.EAST, "pinky");
-    this.__inky = new Ghost(this.maze.ghostRespawn, Direction.WEST, "inky");
-    this.__clyde = new Ghost(this.maze.ghostRespawn, Direction.SOUTH, "clyde");
-    this.__ghosts = [this.blinky, this.pinky, this.inky, this.clyde];
+    this._maze = new Maze(rawMaze);
+    this._pacman = new Pacman(this.maze.pacmanRespawn, Direction.WEST);
+    this._blinky = new Ghost(this.maze.ghostRespawn, Direction.NORTH, "blinky");
+    this._pinky = new Ghost(this.maze.ghostRespawn, Direction.EAST, "pinky");
+    this._inky = new Ghost(this.maze.ghostRespawn, Direction.WEST, "inky");
+    this._clyde = new Ghost(this.maze.ghostRespawn, Direction.SOUTH, "clyde");
+    this._ghosts = [this.blinky, this.pinky, this.inky, this.clyde];
   }
 
   /**
@@ -29,7 +25,7 @@ class Game {
    * @returns {Maze} the maze of the game
    */
   get maze() {
-    return this.__maze;
+    return this._maze;
   }
 
   /**
@@ -38,21 +34,21 @@ class Game {
    * @returns {Pacman} the Pacman
    */
   get pacman() {
-    return this.__pacman;
+    return this._pacman;
   }
 
   /**
    * Moves the sprites of the game.
    */
   moveSprites() {
-    this.__movePacman();
-    this.__moveGhosts();
+    this._movePacman();
+    this._moveGhosts();
   }
 
   /**
    * Moves the Pacman following the rules of the game.
    */
-  __movePacman() {
+  _movePacman() {
     if (
       this.pacman.askedToChangeDirection &&
       this.maze.canWalkOn(
@@ -73,7 +69,7 @@ class Game {
   /**
    * Moves each ghost of the game and eat the Pacman when he's too close.
    */
-  __moveGhosts() {
+  _moveGhosts() {
     for (let ghost of this.ghosts) {
       if (this.maze.canWalkOn(ghost.position.nextPosition(ghost.direction))) {
         ghost.move();
@@ -93,7 +89,7 @@ class Game {
    * @returns {Ghost} Blinky
    */
   get blinky() {
-    return this.__blinky;
+    return this._blinky;
   }
 
   /**
@@ -102,7 +98,7 @@ class Game {
    * @returns {Ghost} Pinky
    */
   get pinky() {
-    return this.__pinky;
+    return this._pinky;
   }
 
   /**
@@ -111,7 +107,7 @@ class Game {
    * @returns {Ghost} Inky
    */
   get inky() {
-    return this.__inky;
+    return this._inky;
   }
 
   /**
@@ -120,7 +116,7 @@ class Game {
    * @returns {Ghost} Clyde
    */
   get clyde() {
-    return this.__clyde;
+    return this._clyde;
   }
 
   /**
@@ -129,6 +125,6 @@ class Game {
    * @returns {Ghost[]} the array of ghosts
    */
   get ghosts() {
-    return this.__ghosts;
+    return this._ghosts;
   }
 }

@@ -10,7 +10,7 @@ class PacmanView {
    * @param {PacmanCtrl} pacmanCtrl - the Pacman controller
    */
   constructor(pacmanCtrl) {
-    this.__pacmanCtrl = pacmanCtrl;
+    this._pacmanCtrl = pacmanCtrl;
     // arrow functions must be used as regular functions change what the keyword
     // `this` refers to ; as arrow functions do not have prototypes yet explicit
     // functions do.
@@ -36,6 +36,6 @@ class PacmanView {
    * @returns {PacmanCtrl}
    */
   get controller() {
-    return this.__pacmanCtrl;
+    return this._pacmanCtrl;
   }
 }

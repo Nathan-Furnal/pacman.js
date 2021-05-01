@@ -10,9 +10,9 @@ class Layer {
    * @param {number} nbColumns - the number of columns
    */
   constructor(nbRows, nbColumns) {
-    this.__nbRows = nbRows;
-    this.__nbColumns = nbColumns;
-    this.__layer = Array(nbRows)
+    this._nbRows = nbRows;
+    this._nbColumns = nbColumns;
+    this._layer = Array(nbRows)
       .fill()
       .map(() => Array(nbColumns));
   }
@@ -27,8 +27,8 @@ class Layer {
     return (
       pos.row >= 0 &&
       pos.column >= 0 &&
-      pos.row < this.__nbRows &&
-      pos.column < this.__nbColumns
+      pos.row < this._nbRows &&
+      pos.column < this._nbColumns
     );
   }
 
@@ -43,7 +43,7 @@ class Layer {
     if (!this.contains(pos)) {
       throw new Error("This position is not on the layer!");
     }
-    this.__layer[pos.row][pos.column] = tile;
+    this._layer[pos.row][pos.column] = tile;
   }
   /**
    * Gets the tile at the given position.
@@ -56,7 +56,7 @@ class Layer {
     if (!this.contains(pos)) {
       throw new Error("This position is not on the layer!");
     }
-    return this.__layer[pos.row][pos.column];
+    return this._layer[pos.row][pos.column];
   }
 
   /**
@@ -70,6 +70,6 @@ class Layer {
     if (!this.contains(pos)) {
       throw new Error("This position is not on the layer!");
     }
-    return this.__layer[pos.row][pos.column] instanceof Tile;
+    return this._layer[pos.row][pos.column] instanceof Tile;
   }
 }

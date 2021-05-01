@@ -15,11 +15,14 @@ class Sprite extends Component {
    */
   constructor(position, direction, id) {
     super(id);
-    this.__position = position;
-    this.__direction = direction;
-    this.__askedToChangeDirection = false;
-    this.__askedDirection;
-    this.__previousPosition = this.position;
+    this._position = position;
+    this._initialPos = position;
+    this._direction = direction;
+    this._initialDir = direction;
+    this._askedToChangeDirection = false;
+    this._askedDirection;
+    this._previousPosition = this.position;
+    this._isDead = false;
   }
 
   /**
@@ -28,7 +31,7 @@ class Sprite extends Component {
    * @returns {Position} the current position
    */
   get position() {
-    return this.__position;
+    return this._position;
   }
 
   /**
@@ -37,7 +40,7 @@ class Sprite extends Component {
    * @returns {Direction} the current direction
    */
   get direction() {
-    return this.__direction;
+    return this._direction;
   }
 
   /**
@@ -47,7 +50,7 @@ class Sprite extends Component {
    * otherwise
    */
   get askedToChangeDirection() {
-    return this.__askedToChangeDirection;
+    return this._askedToChangeDirection;
   }
 
   /**
@@ -57,7 +60,7 @@ class Sprite extends Component {
    * @returns {Direction} the next direction
    */
   get askedDirection() {
-    return this.__askedDirection;
+    return this._askedDirection;
   }
 
   /**
@@ -65,8 +68,8 @@ class Sprite extends Component {
    * previous position which is being left.
    */
   move() {
-    this.__previousPosition = this.position;
-    this.__position = this.position.nextPosition(this.direction);
+    this._previousPosition = this.position;
+    this._position = this.position.nextPosition(this.direction);
   }
 
   /**
@@ -78,15 +81,15 @@ class Sprite extends Component {
    * @param {Direction} direction - the next direction to be headed to
    */
   askToChangeDirection(direction) {
-    this.__askedToChangeDirection = true;
-    this.__askedDirection = direction;
+    this._askedToChangeDirection = true;
+    this._askedDirection = direction;
   }
 
   /**
    * Updates the current direction to the requested direction.
    */
   changeDirection() {
-    this.__direction = this.askedDirection;
+    this._direction = this.askedDirection;
   }
 
   /**
@@ -95,10 +98,35 @@ class Sprite extends Component {
    * @returns {Position} the previous position of the sprite
    */
   get previousPosition() {
-    return this.__previousPosition;
+    return this._previousPosition;
   }
   /**
    * Does nothing at the Sprite level.
    */
   notifyIsBlocked() { }
+
+  /**
+   * Gets the death state of the sprite.
+   *
+   * @returns {boolean} true if the sprite is dead, false otherwise
+   */
+  get isDead() {
+    return this._isDead;
+  }
+
+  /**
+   * Sets the death state to true.
+   */
+  hasBeenEaten() {
+    this._isDead = true;
+  }
+
+  /**
+   * Sets the death state to false.
+   */
+  respawn() {
+    this._isDead = false;
+    this._position = this._initialPos;
+    this._direction = this._initialDir;
+  }
 }

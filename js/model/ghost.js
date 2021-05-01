@@ -5,8 +5,8 @@
 class Ghost extends Sprite {
   constructor(position, direction, id) {
     super(position, direction, id);
-    this.__timer = setInterval(() => {
-      this.__choiceNewDirection();
+    this._timer = setInterval(() => {
+      this._choiceNewDirection();
     }, GHOST_INTERVAL);
   }
 
@@ -15,7 +15,7 @@ class Ghost extends Sprite {
    *
    * @see directions
    */
-  __choiceNewDirection() {
+  _choiceNewDirection() {
     // random index between 0 and 3 to select among the 4 possible directions.
     let randIndex = Math.floor(Math.random() * directions.length);
     let randDirection = directions[randIndex];
@@ -40,6 +40,6 @@ class Ghost extends Sprite {
    * Signifies that the ghost will change directions when blocked.
    */
   notifyIsBlocked() {
-    this.__choiceNewDirection();
+    this._choiceNewDirection();
   }
 }

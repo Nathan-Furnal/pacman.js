@@ -8,7 +8,7 @@ class Component {
    * @param {string} id - a unique identifier to identify the component
    */
   constructor(id) {
-    this.__id = id;
+    this._id = id;
   }
   /**
    * Gets the id of the component
@@ -16,6 +16,6 @@ class Component {
    * @returns {string} the identifier
    */
   get id() {
-    return this.__id;
+    return this._id;
   }
 }

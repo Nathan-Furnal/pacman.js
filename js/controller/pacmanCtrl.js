@@ -8,7 +8,7 @@ class PacmanCtrl {
    * @param {Pacman} pacman - the Pacman object from the model
    */
   constructor(pacman) {
-    this.__pacman = pacman;
+    this._pacman = pacman;
   }
 
   /**
@@ -17,6 +17,6 @@ class PacmanCtrl {
    * @param {Direction} direction - the next direction to head to
    */
   askToChangeDirection(direction) {
-    this.__pacman.askToChangeDirection(direction);
+    this._pacman.askToChangeDirection(direction);
   }
 }

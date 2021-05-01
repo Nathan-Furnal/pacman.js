@@ -9,8 +9,8 @@ class Direction {
    * @param {number} deltaRow - the delta on the vertical axis
    */
   constructor(deltaColumn, deltaRow) {
-    this.__deltaColumn = deltaColumn;
-    this.__deltaRow = deltaRow;
+    this._deltaColumn = deltaColumn;
+    this._deltaRow = deltaRow;
   }
 
   /**
@@ -19,7 +19,7 @@ class Direction {
    * @returns {number} the column delta
    */
   get deltaColumn() {
-    return this.__deltaColumn;
+    return this._deltaColumn;
   }
 
   /**
@@ -28,7 +28,7 @@ class Direction {
    * @returns {number} the row delta
    */
   get deltaRow() {
-    return this.__deltaRow;
+    return this._deltaRow;
   }
 }
 
