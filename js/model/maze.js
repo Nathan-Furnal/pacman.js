@@ -13,17 +13,18 @@ class Maze {
   constructor(rawMaze) {
     this._rawMaze = rawMaze;
     this._wallLayer = new Layer(this.nbRows, this.nbColumns);
-    this.buildWallLayer();
+    this._buildWallLayer();
     this._dotLayer = new Layer(this.nbRows, this.nbColumns);
-    this.buildDotLayer();
-    this._pacmanRespawn = this.findPacman();
-    this._ghostRespawn = this.findGhosts();
+    this._buildDotLayer();
+    this._pacmanRespawn = this._findPacman();
+    this._ghostRespawn = this._findGhosts();
+    this._nbDots = this._countDots();
   }
 
   /**
    * Builds the wall layer, populating it with wall objects.
    */
-  buildWallLayer() {
+  _buildWallLayer() {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
         if (this._rawMaze.table[i][j] === 1) {
@@ -38,7 +39,7 @@ class Maze {
   /**
    * Builds the dot layer, populating it with dot objects.
    */
-  buildDotLayer() {
+  _buildDotLayer() {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
         let val = this._rawMaze.table[i][j];
@@ -102,7 +103,7 @@ class Maze {
    * @returns {Position} the position of the Pacman
    * @throws {Error} will throw an error if the Pacman is not found
    */
-  findPacman() {
+  _findPacman() {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
         if (this._rawMaze.table[i][j] === gameConsts.pacmanMazeValue) {
@@ -168,7 +169,7 @@ class Maze {
    * @returns {Position} the position of the ghosts.
    * @throws {Error} will throw an error if the ghost spawn point are not found
    */
-  findGhosts() {
+  _findGhosts() {
     for (let i = 0; i < this.nbRows; i++) {
       for (let j = 0; j < this.nbColumns; j++) {
         if (this._rawMaze.table[i][j] === gameConsts.ghostMazeValue) {
@@ -186,5 +187,52 @@ class Maze {
    */
   get ghostRespawn() {
     return this._ghostRespawn;
+  }
+  /**
+   * Counts the number of gums (normal or energizer) in the maze.
+   *
+   * @returns {number} the count of dots
+   */
+  _countDots() {
+    let tab = this._rawMaze.table;
+    let count = 0;
+    for (let i = 0; i < this.nbRows; i++) {
+      for (let j = 0; j < this.nbColumns; j++) {
+        if (tab[i][j] === 2 || tab[i][j] === 3) {
+          count++;
+        }
+      }
+    }
+    return count;
+  }
+  /**
+   * Checks if a dot is on the layer, meaning it can be picked.
+   *
+   * @param {Position} pos - the position to check out
+   * @returns {boolean} true if there is a dot on the layer and false otherwise
+   */
+  canPick(pos) {
+    return this.getDotLayerTile(pos) instanceof Dot;
+  }
+
+  /**
+   * Picks the gum at the given position.
+   *
+   * @param {Position} pos - the position to check out
+   * @returns {Dot} the picked dot
+   */
+  pick(pos) {
+    let pickedDot = this.getDotLayerTile(pos);
+    this._dotLayer.setTile(pos, undefined);
+    return pickedDot;
+  }
+
+  /**
+   * Checks if there are no dots left.
+   *
+   * @returns {boolean} true if all the gums have been eaten and false otherwise
+   */
+  isEmpty() {
+    return this._countDots() === 0;
   }
 }

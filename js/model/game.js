@@ -24,6 +24,8 @@ class Game {
       this.inky,
       this.clyde,
     ];
+    this._score = 0;
+    this._removedDot;
   }
 
   /**
@@ -70,6 +72,14 @@ class Game {
       )
     ) {
       this.pacman.move();
+    }
+    let pacmanPos = this.pacman.position;
+    if (this.maze.canPick(pacmanPos)) {
+      let pickedDot = this.maze.pick(pacmanPos);
+      this._removedDot = pickedDot;
+      // Checks if dot is energizer and gives score accordingly
+      let tmpScore = pickedDot.isEnergizer ? 100 : 10;
+      this._score += tmpScore;
     }
   }
 
@@ -170,5 +180,12 @@ class Game {
     for (let sprite of this.sprites) {
       sprite.respawn();
     }
+  }
+  get score() {
+    return this._score;
+  }
+
+  get removedDot() {
+    return this._removedDot;
   }
 }

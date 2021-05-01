@@ -104,6 +104,10 @@ class GameView {
       $(`#${ghost.id}`).remove();
     }
     this.makeGhosts();
+    // Remote gum when eaten
+    $(`#${this.game.removedDot.id}`).remove();
+    // Update player score
+    $("#player-score").text(this.game.score);
   }
 
   /**
