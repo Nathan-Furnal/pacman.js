@@ -32,7 +32,8 @@ class Ghost extends Sprite {
   canEat(pacman) {
     return (
       this.position.equals(pacman.position) ||
-      this.previousPosition.equals(pacman.previousPosition)
+      (this.previousPosition.equals(pacman.position) &&
+        this.position.equals(pacman.previousPosition))
     );
   }
 

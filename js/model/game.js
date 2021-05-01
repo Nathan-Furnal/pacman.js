@@ -84,7 +84,8 @@ class Game {
         ghost.notifyIsBlocked();
         ghost.changeDirection();
       }
-      if (ghost.canEat(this.pacman)) {
+      // Makes sure Pacman can only lose one life on contact with ghosts
+      if (ghost.canEat(this.pacman) && !this.pacman.isDead) {
         this.pacman.hasBeenEaten();
       }
     }

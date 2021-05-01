@@ -20,6 +20,11 @@ class GameCtrl {
       this.game.moveSprites();
       if (this.game.pacmanHasBeenEaten()) {
         this.game.respawn();
+        this.view.updateLives();
+        if (this.game.isGameOver()) {
+          console.log("You died");
+          clearInterval(this._timer);
+        }
       }
       this.view.updateFrame();
     }, RUN_INTERVAL);

@@ -18,6 +18,7 @@ class GameView {
     }
     this.makePacman();
     this.makeGhosts();
+    this.updateLives();
   }
 
   /**
@@ -120,7 +121,16 @@ class GameView {
     }
   }
 
-  makeLives() { }
+  updateLives() {
+    $("#bottom-bar").empty();
+    for (let i = 0; i < this.game.pacman.nbLives; i++) {
+      $("#bottom-bar").append(
+        $("<span>")
+          .addClass("life")
+          .css({ left: `${gameConsts.itemSizeWithSpace * i}px` })
+      );
+    }
+  }
 
   /**
    * Gets the game composing the view.

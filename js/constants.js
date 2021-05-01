@@ -3,10 +3,11 @@
  * Pacman and the ghosts on the maze file.
  *
  * @constant
- * @type {{itemSize : number, pacmanMazeValue : number, ghostMazeValue : number}}
+ * @type {{itemSize : number, itemSizeWithSpace : number, pacmanMazeValue : number, ghostMazeValue : number}}
  */
 const gameConsts = {
   itemSize: 15,
+  itemSizeWithSpace: 20,
   pacmanMazeValue: 4,
   ghostMazeValue: 5,
 };
