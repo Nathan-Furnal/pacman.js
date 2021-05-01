@@ -17,6 +17,13 @@ class Game {
     this._inky = new Ghost(this.maze.ghostRespawn, Direction.WEST, "inky");
     this._clyde = new Ghost(this.maze.ghostRespawn, Direction.SOUTH, "clyde");
     this._ghosts = [this.blinky, this.pinky, this.inky, this.clyde];
+    this._sprites = [
+      this.pacman,
+      this.blinky,
+      this.pinky,
+      this.inky,
+      this.clyde,
+    ];
   }
 
   /**
@@ -78,7 +85,7 @@ class Game {
         ghost.changeDirection();
       }
       if (ghost.canEat(this.pacman)) {
-        console.log("Pacman has been eaten!");
+        this.pacman.hasBeenEaten();
       }
     }
   }
@@ -126,5 +133,41 @@ class Game {
    */
   get ghosts() {
     return this._ghosts;
+  }
+
+  /**
+   * Gets all the sprites of the game.
+   *
+   * @returns {Sprite[]} the array of sprites
+   */
+  get sprites() {
+    return this._sprites;
+  }
+
+  /**
+   * Checks if the game is over which is the case when the Pacman has no more
+   * lives left.
+   *
+   * @returns {boolean} true if the game is over and false otherwise
+   */
+  isGameOver() {
+    return this.pacman.nbLives === 0;
+  }
+  /**
+   * Checks if the Pacman has been eaten.
+   *
+   * @returns {boolean} true if the Pacman has been eaten.
+   */
+  pacmanHasBeenEaten() {
+    return this.pacman.isDead;
+  }
+
+  /**
+   * Puts all the sprites back in their original place and directions.
+   */
+  respawn() {
+    for (let sprite of this.sprites) {
+      sprite.respawn();
+    }
   }
 }

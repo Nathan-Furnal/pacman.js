@@ -18,6 +18,9 @@ class GameCtrl {
   run() {
     this._timer = setInterval(() => {
       this.game.moveSprites();
+      if (this.game.pacmanHasBeenEaten()) {
+        this.game.respawn();
+      }
       this.view.updateFrame();
     }, RUN_INTERVAL);
   }

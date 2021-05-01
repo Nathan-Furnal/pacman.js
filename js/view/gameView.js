@@ -120,6 +120,8 @@ class GameView {
     }
   }
 
+  makeLives() { }
+
   /**
    * Gets the game composing the view.
    *

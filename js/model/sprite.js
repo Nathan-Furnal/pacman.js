@@ -68,7 +68,7 @@ class Sprite extends Component {
    * previous position which is being left.
    */
   move() {
-    this._previousPosition = this.position;
+    this._previousPosition = this._position;
     this._position = this.position.nextPosition(this.direction);
   }
 
@@ -122,11 +122,13 @@ class Sprite extends Component {
   }
 
   /**
-   * Sets the death state to false.
+   * Sets the death state to false and puts the sprite back in its initial
+   * position and direction.
    */
   respawn() {
     this._isDead = false;
     this._position = this._initialPos;
     this._direction = this._initialDir;
+    this._askedDirection = this._direction;
   }
 }
