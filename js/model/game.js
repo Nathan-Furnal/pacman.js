@@ -26,6 +26,7 @@ class Game {
     ];
     this._score = 0;
     this._removedDot;
+    this._highScore = this._loadHighScore();
   }
 
   /**
@@ -181,11 +182,54 @@ class Game {
       sprite.respawn();
     }
   }
+
+  /**
+   * Gets the score.
+   *
+   * @returns {number} the current score
+   */
   get score() {
     return this._score;
   }
 
+  /**
+   * Gets the removed dot which was just picked.
+   *
+   * @returns {Dot} the removed dot
+   */
   get removedDot() {
     return this._removedDot;
+  }
+
+  /**
+   * Loads the high score from local storage.
+   *
+   * @returns {number} the high score and 0 is there is no high score yet
+   */
+  _loadHighScore() {
+    let highScore = localStorage.getItem("highScore");
+    if (!highScore) {
+      highScore = 0;
+    }
+    return Number(highScore);
+  }
+
+  /**
+   * Gets the high score.
+   *
+   * @returns {number} the high score
+   */
+  get highScore() {
+    return this._highScore;
+  }
+
+  /**
+   * Saves the high score to local storage and updates it when needed.
+   */
+  saveScore() {
+    if (this.score > this.highScore) {
+      this._highScore = this.score;
+      localStorage.setItem("highScore", this.highScore);
+    }
   }
 }

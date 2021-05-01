@@ -24,6 +24,8 @@ class GameCtrl {
         if (this.game.isGameOver()) {
           console.log("You died");
           clearInterval(this._timer);
+          this.game.saveScore();
+          this.view.displayGameOver();
         }
       }
       this.view.updateFrame();

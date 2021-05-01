@@ -19,6 +19,7 @@ class GameView {
     this.makePacman();
     this.makeGhosts();
     this.updateLives();
+    this._makeHighScore();
   }
 
   /**
@@ -104,9 +105,9 @@ class GameView {
       $(`#${ghost.id}`).remove();
     }
     this.makeGhosts();
-    // Remote gum when eaten
+    // Removes gum when eaten
     $(`#${this.game.removedDot.id}`).remove();
-    // Update player score
+    // Updates player score
     $("#player-score").text(this.game.score);
   }
 
@@ -143,5 +144,15 @@ class GameView {
    */
   get game() {
     return this._game;
+  }
+  /**
+   * Displays the high score on screen.
+   */
+  _makeHighScore() {
+    $("#high-score").text(this.game.highScore);
+  }
+
+  displayGameOver() {
+    this._makeHighScore();
   }
 }
