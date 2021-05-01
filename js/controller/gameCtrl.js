@@ -29,6 +29,10 @@ class GameCtrl {
         }
       }
       this.view.updateFrame();
+      if (this.game.lvlSucceed()) {
+        this.game.nextLevel();
+        this.view.nextLevel();
+      }
     }, RUN_INTERVAL);
   }
 

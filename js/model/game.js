@@ -10,6 +10,7 @@ class Game {
    * based
    */
   constructor(rawMaze) {
+    this._rawMaze = rawMaze;
     this._maze = new Maze(rawMaze);
     this._pacman = new Pacman(this.maze.pacmanRespawn, Direction.WEST);
     this._blinky = new Ghost(this.maze.ghostRespawn, Direction.NORTH, "blinky");
@@ -231,5 +232,23 @@ class Game {
       this._highScore = this.score;
       localStorage.setItem("highScore", this.highScore);
     }
+  }
+
+  /**
+   * Checks if player has succeeded completing the level.
+   *
+   * @returns {boolean} true if the maze is empty and false otherwise
+   */
+  lvlSucceed() {
+    return this.maze.isEmpty();
+  }
+
+  /**
+   * Creates the next level with a new maze and puts all the sprites back in
+   * their initial place.
+   */
+  nextLevel() {
+    this._maze = new Maze(this._rawMaze);
+    this.respawn();
   }
 }

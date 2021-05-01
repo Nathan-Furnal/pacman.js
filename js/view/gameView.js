@@ -146,13 +146,30 @@ class GameView {
     return this._game;
   }
   /**
-   * Displays the high score on screen.
+   * Displays the high score on screen at startup.
    */
   _makeHighScore() {
     $("#high-score").text(this.game.highScore);
   }
-
+  /**
+   * Displays the high score on screen.
+   */
   displayGameOver() {
     this._makeHighScore();
+  }
+
+  /**
+   * Makes the next level by redrawing the scene and putting the sprites back
+   * into place.
+   */
+  nextLevel() {
+    $("#scene").empty();
+    this.makeScene();
+    for (let i = 0; i < this.game.maze.nbRows; i++) {
+      for (let j = 0; j < this.game.maze.nbColumns; j++) {
+        this.makeWallTile(i, j);
+        this.makeDotTile(i, j);
+      }
+    }
   }
 }

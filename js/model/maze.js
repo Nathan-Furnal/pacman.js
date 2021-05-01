@@ -224,6 +224,7 @@ class Maze {
   pick(pos) {
     let pickedDot = this.getDotLayerTile(pos);
     this._dotLayer.setTile(pos, undefined);
+    this._nbDots--;
     return pickedDot;
   }
 
@@ -233,6 +234,6 @@ class Maze {
    * @returns {boolean} true if all the gums have been eaten and false otherwise
    */
   isEmpty() {
-    return this._countDots() === 0;
+    return this._nbDots === 0;
   }
 }
