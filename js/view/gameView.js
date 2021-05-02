@@ -22,6 +22,10 @@ class GameView {
     this.updateLives();
     this._makeHighScore();
     this.makeStartButton();
+    // Starts the game on the button click
+    $(`#${START_BUTTON_ID}`).on("click", () => {
+      this.startGame();
+    });
   }
 
   /**
