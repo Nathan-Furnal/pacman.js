@@ -56,3 +56,11 @@ const GHOST_INTERVAL = 4000;
  * @type {number}
  */
 const PACMAN_NB_LIVES = 2;
+
+/**
+ * The start button id.
+ *
+ * @constant
+ * @type {string}
+ */
+const START_BUTTON_ID = "start-button";

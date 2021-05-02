@@ -10,6 +10,10 @@ class GameCtrl {
     this._view = new GameView(this._game, this);
     this._pacmanCtrl = new PacmanCtrl(this._game.pacman);
     this._pacmanView = new PacmanView(this._pacmanCtrl);
+    // Starts the game by calling the view in the constructor
+    $(`#${START_BUTTON_ID}`).on("click", () => {
+      this.view.startGame();
+    });
   }
 
   /**
