@@ -80,6 +80,9 @@ class Game {
       let pickedDot = this.maze.pick(pacmanPos);
       this._removedDot = pickedDot;
       // Checks if dot is energizer and gives score accordingly
+      if (pickedDot.isEnergizer) {
+        this.pacman.gettingDrunk();
+      }
       let tmpScore = pickedDot.isEnergizer ? 100 : 10;
       this._score += tmpScore;
     }

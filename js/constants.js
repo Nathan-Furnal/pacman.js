@@ -89,3 +89,11 @@ const PACMAN_NB_LIVES = 2;
  * @type {string}
  */
 const START_BUTTON_ID = "start-button";
+
+/**
+ * Duration of the Pacman's drunken state.
+ *
+ * @constant
+ * @type {number}
+ */
+const DRUNK_TIME = 5000;
