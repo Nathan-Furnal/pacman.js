@@ -29,6 +29,31 @@ const PACMAN_ID = "pacman-id";
 const RUN_INTERVAL = 300;
 
 /**
+ * North direction.
+ *
+ * @type {Direction}
+ */
+Direction.NORTH = new Direction(0, -1);
+/**
+ * South direction.
+ *
+ * @type {Direction}
+ */
+Direction.SOUTH = new Direction(0, 1);
+/**
+ * West direction.
+ *
+ * @type {Direction}
+ */
+Direction.WEST = new Direction(-1, 0);
+/**
+ * East direction.
+ *
+ * @type {Direction}
+ */
+Direction.EAST = new Direction(1, 0);
+
+/**
  * The four possible directions in the game.
  *
  * @constant
