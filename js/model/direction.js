@@ -31,11 +31,3 @@ class Direction {
     return this._deltaRow;
   }
 }
-
-/**
- * Constants for the directions
- */
-Direction.NORTH = new Direction(0, -1);
-Direction.SOUTH = new Direction(0, 1);
-Direction.WEST = new Direction(-1, 0);
-Direction.EAST = new Direction(1, 0);
