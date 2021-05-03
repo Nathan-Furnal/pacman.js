@@ -55,7 +55,7 @@ class Sprite extends Component {
 
   /**
    * Gets the next direction to be headed to, if it exists. Note that since it
-   * is not set at initilization, it can return an undefined value.
+   * is not set at initialization, it can return an undefined value.
    *
    * @returns {Direction} the next direction
    */
