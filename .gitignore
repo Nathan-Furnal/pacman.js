@@ -2,6 +2,7 @@
 
 *~
 
-# Ignore my config
+# Ignore my config & log files
 
-jsconfig.json
+*.json
+.log/
