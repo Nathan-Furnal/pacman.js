@@ -13,3 +13,6 @@ git clone https://github.com/Nathan-Furnal/pacman.js
 
 https://user-images.githubusercontent.com/45597572/152876504-e3f4d49a-4eba-41e1-999d-8f95ed571b6b.mp4
 
+# Credits
+
+Project devised and created during my studies at the École Supérieure d'Informatique (ESI), Brussels.
